@@ -43,6 +43,20 @@ class AnswerView : UIView, UITableViewDelegate, UITableViewDataSource {
         tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
 
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let searchBar = UISearchBar()
+
+        searchBar.placeholder = "Insert Word"
+        searchBar.searchBarStyle = .minimal
+        searchBar.setImage(UIImage(), for: .search, state: .normal)
+        searchBar.setPositionAdjustment(
+            UIOffset(horizontal: -20, vertical: 0),
+            for: .search
+        )
+
+        return searchBar
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
