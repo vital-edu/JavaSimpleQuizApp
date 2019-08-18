@@ -20,7 +20,7 @@
 		A9DEFEEB2309B0EC00F82CCF /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DEFEEA2309B0EC00F82CCF /* QuizView.swift */; };
 		A9DEFEED2309B1BD00F82CCF /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DEFEEC2309B1BD00F82CCF /* QuestionView.swift */; };
 		A9DEFEEF2309B6F600F82CCF /* AnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DEFEEE2309B6F600F82CCF /* AnswerView.swift */; };
-		A9DEFEF12309B83C00F82CCF /* ProgressDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DEFEF02309B83C00F82CCF /* ProgressDisplay.swift */; };
+		A9DEFEF12309B83C00F82CCF /* ProgressDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DEFEF02309B83C00F82CCF /* ProgressDisplayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +60,7 @@
 		A9DEFEEA2309B0EC00F82CCF /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		A9DEFEEC2309B1BD00F82CCF /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		A9DEFEEE2309B6F600F82CCF /* AnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerView.swift; sourceTree = "<group>"; };
-		A9DEFEF02309B83C00F82CCF /* ProgressDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDisplay.swift; sourceTree = "<group>"; };
+		A9DEFEF02309B83C00F82CCF /* ProgressDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDisplayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,7 +165,7 @@
 			children = (
 				A9DEFEEC2309B1BD00F82CCF /* QuestionView.swift */,
 				A9DEFEEE2309B6F600F82CCF /* AnswerView.swift */,
-				A9DEFEF02309B83C00F82CCF /* ProgressDisplay.swift */,
+				A9DEFEF02309B83C00F82CCF /* ProgressDisplayView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -310,7 +310,7 @@
 				A9DEFEEB2309B0EC00F82CCF /* QuizView.swift in Sources */,
 				A9DEFEDE2309A13B00F82CCF /* QuizRouter.swift in Sources */,
 				A9DEFEED2309B1BD00F82CCF /* QuestionView.swift in Sources */,
-				A9DEFEF12309B83C00F82CCF /* ProgressDisplay.swift in Sources */,
+				A9DEFEF12309B83C00F82CCF /* ProgressDisplayView.swift in Sources */,
 				A9DEFEDC2309A13B00F82CCF /* QuizPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

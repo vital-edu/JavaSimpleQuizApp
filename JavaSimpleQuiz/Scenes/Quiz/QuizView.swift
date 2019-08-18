@@ -27,6 +27,6 @@ class QuizView : UIStackView {
 
         self.addArrangedSubview(QuestionView())
         self.addArrangedSubview(AnswerView())
-        self.addArrangedSubview(ProgressDisplay())
+        self.addArrangedSubview(ProgressDisplayView())
     }
 }
