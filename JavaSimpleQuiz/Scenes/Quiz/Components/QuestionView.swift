@@ -23,7 +23,7 @@ class QuestionView : UILabel {
     private func setupView() {
         self.numberOfLines = 0
         self.lineBreakMode = .byWordWrapping
-        self.font = UIFont(name: ".SFUIDisplay-Bold", size: 34)
+        self.font = DefaultFont.titleFont
         self.text = "What are all the java Keywords?"
     }
 }
