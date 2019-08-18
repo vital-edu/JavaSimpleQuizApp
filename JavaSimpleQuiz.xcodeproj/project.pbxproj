@@ -17,6 +17,10 @@
 		A9DEFEDF2309A13B00F82CCF /* QuizModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DEFED92309A13B00F82CCF /* QuizModels.swift */; };
 		A9DEFEE02309A13B00F82CCF /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DEFEDA2309A13B00F82CCF /* QuizViewController.swift */; };
 		A9DEFEE12309A13B00F82CCF /* QuizInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DEFEDB2309A13B00F82CCF /* QuizInteractor.swift */; };
+		A9DEFEEB2309B0EC00F82CCF /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DEFEEA2309B0EC00F82CCF /* QuizView.swift */; };
+		A9DEFEED2309B1BD00F82CCF /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DEFEEC2309B1BD00F82CCF /* QuestionView.swift */; };
+		A9DEFEEF2309B6F600F82CCF /* AnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DEFEEE2309B6F600F82CCF /* AnswerView.swift */; };
+		A9DEFEF12309B83C00F82CCF /* ProgressDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DEFEF02309B83C00F82CCF /* ProgressDisplay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,10 @@
 		A9DEFED92309A13B00F82CCF /* QuizModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModels.swift; sourceTree = "<group>"; };
 		A9DEFEDA2309A13B00F82CCF /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		A9DEFEDB2309A13B00F82CCF /* QuizInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizInteractor.swift; sourceTree = "<group>"; };
+		A9DEFEEA2309B0EC00F82CCF /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		A9DEFEEC2309B1BD00F82CCF /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
+		A9DEFEEE2309B6F600F82CCF /* AnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerView.swift; sourceTree = "<group>"; };
+		A9DEFEF02309B83C00F82CCF /* ProgressDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDisplay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,14 +148,26 @@
 		A9DEFED52309A12900F82CCF /* Quiz */ = {
 			isa = PBXGroup;
 			children = (
+				A9DEFEE92309B0DB00F82CCF /* Components */,
 				A9DEFED62309A13B00F82CCF /* QuizPresenter.swift */,
 				A9DEFED72309A13B00F82CCF /* QuizWorker.swift */,
 				A9DEFED82309A13B00F82CCF /* QuizRouter.swift */,
 				A9DEFED92309A13B00F82CCF /* QuizModels.swift */,
 				A9DEFEDA2309A13B00F82CCF /* QuizViewController.swift */,
 				A9DEFEDB2309A13B00F82CCF /* QuizInteractor.swift */,
+				A9DEFEEA2309B0EC00F82CCF /* QuizView.swift */,
 			);
 			path = Quiz;
+			sourceTree = "<group>";
+		};
+		A9DEFEE92309B0DB00F82CCF /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A9DEFEEC2309B1BD00F82CCF /* QuestionView.swift */,
+				A9DEFEEE2309B6F600F82CCF /* AnswerView.swift */,
+				A9DEFEF02309B83C00F82CCF /* ProgressDisplay.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,10 +303,14 @@
 			files = (
 				A9DEFEE02309A13B00F82CCF /* QuizViewController.swift in Sources */,
 				A9DEFE8A2309951400F82CCF /* AppDelegate.swift in Sources */,
+				A9DEFEEF2309B6F600F82CCF /* AnswerView.swift in Sources */,
 				A9DEFEE12309A13B00F82CCF /* QuizInteractor.swift in Sources */,
 				A9DEFEDF2309A13B00F82CCF /* QuizModels.swift in Sources */,
 				A9DEFEDD2309A13B00F82CCF /* QuizWorker.swift in Sources */,
+				A9DEFEEB2309B0EC00F82CCF /* QuizView.swift in Sources */,
 				A9DEFEDE2309A13B00F82CCF /* QuizRouter.swift in Sources */,
+				A9DEFEED2309B1BD00F82CCF /* QuestionView.swift in Sources */,
+				A9DEFEF12309B83C00F82CCF /* ProgressDisplay.swift in Sources */,
 				A9DEFEDC2309A13B00F82CCF /* QuizPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

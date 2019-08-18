@@ -57,5 +57,29 @@ class QuizViewController: UIViewController, QuizDisplayLogic {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    let quizView = QuizView();
+    quizView.translatesAutoresizingMaskIntoConstraints = false
+
+    self.view.addSubview(quizView)
+
+    // quiz view constraints
+    let horizontalMargin : CGFloat = 16;
+    let topMargin : CGFloat = 44;
+    quizView.topAnchor.constraint(
+        equalTo: view.safeAreaLayoutGuide.topAnchor,
+        constant: topMargin
+    ).isActive = true
+    quizView.leadingAnchor.constraint(
+        equalTo: view.safeAreaLayoutGuide.leadingAnchor,
+        constant: horizontalMargin
+    ).isActive = true
+    quizView.trailingAnchor.constraint(
+        equalTo: view.safeAreaLayoutGuide.trailingAnchor,
+        constant: -horizontalMargin
+    ).isActive = true
+    quizView.bottomAnchor.constraint(
+        equalTo: view.safeAreaLayoutGuide.bottomAnchor
+    ).isActive = true
   }
 }
