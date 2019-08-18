@@ -10,6 +10,27 @@ import Foundation
 import UIKit
 
 class ProgressDisplayView : UIView {
+    let timeFormat = "%02i:%02i:%02i"
+    let timerLabel = UILabel()
+    let scoreLabel = UILabel()
+
+    private var remainingTime: Int = 0 {
+        didSet (newValue) {
+            let hours = Int(newValue) / 3600
+            let minutes = Int(newValue) / 60 % 60
+            let seconds = Int(newValue) % 60
+
+            timerLabel.text = String(format: timeFormat, hours, minutes, seconds)
+            self.remainingTime = newValue
+        }
+    }
+
+    private var correctAnswers: Int = 0 {
+        didSet(newValue) {
+            scoreLabel.text = String(format: "%i/%i", newValue, 50)
+        }
+    }
+
     private lazy var button: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Start", for: .normal)
@@ -22,9 +43,15 @@ class ProgressDisplayView : UIView {
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.distribution = .fill
+        stackView.distribution = .equalCentering
         stackView.alignment = .fill
         stackView.translatesAutoresizingMaskIntoConstraints = false
+
+        scoreLabel.font = DefaultFont.buttonFont
+        timerLabel.font = DefaultFont.buttonFont
+
+        stackView.addArrangedSubview(scoreLabel)
+        stackView.addArrangedSubview(timerLabel)
 
         return stackView
     }()
@@ -51,6 +78,9 @@ class ProgressDisplayView : UIView {
         self.addSubview(button)
 
         setupConstraints()
+
+        remainingTime = 5 * 60
+        correctAnswers = 0
     }
 
     private func setupConstraints() {
