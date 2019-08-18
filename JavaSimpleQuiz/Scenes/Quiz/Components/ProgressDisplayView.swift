@@ -61,20 +61,20 @@ class ProgressDisplayView : UIView {
             .constraint(equalTo: self.topAnchor, constant: margin)
             .isActive = true
         stackView.leadingAnchor
-            .constraint(equalTo: self.leadingAnchor)
+            .constraint(equalTo: self.leadingAnchor, constant: margin)
             .isActive = true
         stackView.trailingAnchor
-            .constraint(equalTo: self.trailingAnchor)
+            .constraint(equalTo: self.trailingAnchor, constant: -margin)
             .isActive = true
 
         button.topAnchor
             .constraint(equalTo: stackView.bottomAnchor, constant: margin)
             .isActive = true
         button.leadingAnchor
-            .constraint(equalTo: self.leadingAnchor)
+            .constraint(equalTo: self.leadingAnchor, constant: margin)
             .isActive = true
         button.trailingAnchor
-            .constraint(equalTo: self.trailingAnchor)
+            .constraint(equalTo: self.trailingAnchor, constant: -margin)
             .isActive = true
         button.bottomAnchor
             .constraint(equalTo: self.bottomAnchor)

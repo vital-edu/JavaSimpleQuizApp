@@ -22,11 +22,23 @@ class QuizView : UIStackView {
 
     private func setupView() {
         self.distribution = .fill
-        self.alignment = .fill
+        self.alignment = .center
         self.axis = .vertical
 
-        self.addArrangedSubview(QuestionView())
-        self.addArrangedSubview(AnswerView())
-        self.addArrangedSubview(ProgressDisplayView())
+        let questionView = QuestionView()
+        let answerView = AnswerView()
+        let progressDisplayView = ProgressDisplayView()
+
+        self.addArrangedSubview(questionView)
+        self.addArrangedSubview(answerView)
+        self.addArrangedSubview(progressDisplayView)
+
+        questionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16).isActive = true
+        questionView.trailingAnchor.constraint(equalTo: self.leadingAnchor, constant: -16).isActive = true
+
+        answerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16).isActive = true
+        answerView.trailingAnchor.constraint(equalTo: self.leadingAnchor, constant: -16).isActive = true
+
+        progressDisplayView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
     }
 }

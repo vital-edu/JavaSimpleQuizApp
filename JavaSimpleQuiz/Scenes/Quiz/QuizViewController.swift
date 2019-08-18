@@ -64,19 +64,16 @@ class QuizViewController: UIViewController, QuizDisplayLogic {
     self.view.addSubview(quizView)
 
     // quiz view constraints
-    let horizontalMargin : CGFloat = 16;
     let topMargin : CGFloat = 44;
     quizView.topAnchor.constraint(
         equalTo: view.safeAreaLayoutGuide.topAnchor,
         constant: topMargin
     ).isActive = true
     quizView.leadingAnchor.constraint(
-        equalTo: view.safeAreaLayoutGuide.leadingAnchor,
-        constant: horizontalMargin
+        equalTo: view.safeAreaLayoutGuide.leadingAnchor
     ).isActive = true
     quizView.trailingAnchor.constraint(
-        equalTo: view.safeAreaLayoutGuide.trailingAnchor,
-        constant: -horizontalMargin
+        equalTo: view.safeAreaLayoutGuide.trailingAnchor
     ).isActive = true
     quizView.bottomAnchor.constraint(
         equalTo: view.safeAreaLayoutGuide.bottomAnchor
