@@ -76,7 +76,7 @@ class QuizViewController: UIViewController, QuizDisplayLogic {
         equalTo: view.safeAreaLayoutGuide.trailingAnchor
     ).isActive = true
     quizView.bottomAnchor.constraint(
-        equalTo: view.safeAreaLayoutGuide.bottomAnchor
+        equalTo: view.bottomAnchor
     ).isActive = true
   }
 }

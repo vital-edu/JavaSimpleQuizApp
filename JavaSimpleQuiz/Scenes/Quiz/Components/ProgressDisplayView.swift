@@ -37,6 +37,7 @@ class ProgressDisplayView : UIView {
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = UIColor(red: 1, green: 0.51, blue: 0, alpha: 1)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.cornerRadius = 10
 
         return button
     }()
@@ -107,7 +108,7 @@ class ProgressDisplayView : UIView {
             .constraint(equalTo: self.trailingAnchor, constant: -margin)
             .isActive = true
         button.bottomAnchor
-            .constraint(equalTo: self.bottomAnchor)
+            .constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -margin)
             .isActive = true
         button.heightAnchor
             .constraint(equalToConstant: buttonHeight)

@@ -34,10 +34,10 @@ class QuizView : UIStackView {
         self.addArrangedSubview(progressDisplayView)
 
         questionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16).isActive = true
-        questionView.trailingAnchor.constraint(equalTo: self.leadingAnchor, constant: -16).isActive = true
+        questionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16).isActive = true
 
         answerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16).isActive = true
-        answerView.trailingAnchor.constraint(equalTo: self.leadingAnchor, constant: -16).isActive = true
+        answerView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16).isActive = true
 
         progressDisplayView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
     }
