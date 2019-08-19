@@ -22,7 +22,7 @@ enum ShowQuiz {
         var progressDisplay: ProgressDisplay
 
         struct ProgressDisplay {
-            var time: Double
+            var time: Int
             var discoveredAnswers: Int
             var totalAnswers: Int
             var answers: [String]

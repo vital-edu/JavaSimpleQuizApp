@@ -10,26 +10,30 @@ import Foundation
 import UIKit
 
 class ProgressDisplayView : UIView {
-    let timeFormat = "%02i:%02i:%02i"
+    let timeFormat = "%02i:%02i"
     let timerLabel = UILabel()
     let scoreLabel = UILabel()
 
-    private var answers: [String] = []
+    private var answers: [String] = [] {
+        didSet {
+            correctAnswers = 0
+        }
+    }
 
     private var remainingTime: Int = 0 {
-        didSet (newValue) {
-            let hours = Int(newValue) / 3600
-            let minutes = Int(newValue) / 60 % 60
-            let seconds = Int(newValue) % 60
+        didSet {
+            let minutes = Int(self.remainingTime) / 60 % 60
+            let seconds = Int(self.remainingTime) % 60
 
-            timerLabel.text = String(format: timeFormat, hours, minutes, seconds)
-            self.remainingTime = newValue
+            timerLabel.text = String(format: timeFormat, minutes, seconds)
         }
     }
 
     private var correctAnswers: Int = 0 {
-        didSet(newValue) {
-            scoreLabel.text = String(format: "%i/%i", newValue, 0)
+        didSet {
+            scoreLabel.text = String(
+                format: "%02i/%02i", self.correctAnswers, answers.count
+            )
         }
     }
 
@@ -59,6 +63,8 @@ class ProgressDisplayView : UIView {
         return stackView
     }()
 
+    // MARK: - Initializers
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -69,9 +75,14 @@ class ProgressDisplayView : UIView {
         setupView()
     }
 
+    // MARK: Setter
+
     func set(withModel model: ShowQuiz.ViewModel.ProgressDisplay) {
         self.answers = model.answers
+        self.remainingTime = model.time
     }
+
+    // MARK: - Setup View
 
     private func setupView() {
         self.backgroundColor = UIColor(

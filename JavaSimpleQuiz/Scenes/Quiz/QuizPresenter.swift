@@ -17,10 +17,10 @@ class QuizPresenter: QuizPresentationLogic {
 
     func presentFetchedQuiz(response: ShowQuiz.Response) {
         let progressDisplay = ShowQuiz.ViewModel.ProgressDisplay(
-            time: 5,
+            time: 5 * 60,
             discoveredAnswers: 0,
             totalAnswers: response.quiz.answers.count,
-            answers: []
+            answers:response.quiz.answers
         )
         let viewModel = ShowQuiz.ViewModel(
             question: response.quiz.question,
