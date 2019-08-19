@@ -17,6 +17,7 @@ class QuizViewController: UIViewController, QuizDisplayLogic {
     var interactor: QuizBusinessLogic?
     var router: (NSObjectProtocol & QuizRoutingLogic & QuizDataPassing)?
     var loadingView: UIVisualEffectView?
+    var bottomViewConstraint: NSLayoutConstraint?
 
     // MARK: Object lifecycle
 
@@ -69,6 +70,21 @@ class QuizViewController: UIViewController, QuizDisplayLogic {
         self.view.addSubview(quizView)
         self.setupWaitingView()
 
+        // configure keyboard observers
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(QuizViewController.keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification, object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(QuizViewController.keyboardWillHide),
+            name: UIResponder.keyboardDidHideNotification,
+            object: nil
+        )
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(QuizViewController.dismissKeyboard))
+        self.view.addGestureRecognizer(tapRecognizer)
+
         quizView.translatesAutoresizingMaskIntoConstraints = false
 
         // quiz view constraints
@@ -83,9 +99,10 @@ class QuizViewController: UIViewController, QuizDisplayLogic {
         quizView.trailingAnchor.constraint(
             equalTo: view.safeAreaLayoutGuide.trailingAnchor
         ).isActive = true
-        quizView.bottomAnchor.constraint(
+        bottomViewConstraint = quizView.bottomAnchor.constraint(
             equalTo: view.bottomAnchor
-        ).isActive = true
+        )
+        bottomViewConstraint!.isActive = true
     }
 
     func setupWaitingView() {
@@ -96,6 +113,38 @@ class QuizViewController: UIViewController, QuizDisplayLogic {
         loadingView!.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
         loadingView!.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         loadingView!.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+    }
+
+    // MARK: - Selectors
+
+    @objc fileprivate func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
+
+    @objc fileprivate func keyboardWillShow(notification: Notification) {
+        guard let constraint = bottomViewConstraint else { return }
+        guard let userInfo = notification.userInfo else { return }
+
+        if let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+            let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval {
+
+            constraint.constant = -keyboardSize.height
+            UIView.animate(withDuration: duration, delay: 0, options: .beginFromCurrentState, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: nil)
+        }
+    }
+
+    @objc fileprivate func keyboardWillHide(notification: Notification) {
+        guard let constraint = bottomViewConstraint else { return }
+        guard let userInfo = notification.userInfo else { return }
+
+        if let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval {
+            constraint.constant = 0
+            UIView.animate(withDuration: duration, delay: 0, options: .beginFromCurrentState, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: nil)
+        }
     }
 
     // MARK: - Fetch orders
