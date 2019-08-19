@@ -78,6 +78,7 @@ class ProgressDisplayView : UIView {
     // MARK: Setters
 
     func set(withModel model: ShowQuiz.ViewModel.ProgressDisplay) {
+        self.correctAnswers = 0
         self.totalAnswers = model.totalAnswers
         self.remainingTime = model.time
     }
@@ -89,17 +90,25 @@ class ProgressDisplayView : UIView {
     // MARK: - Selectors
 
     @objc fileprivate func startReset() {
-        delegate?.answer(isAllowed: true)
+        if let timer = timer {
+            timer.invalidate()
+            self.timer = nil
+            self.delegate?.reset()
 
-        timer = Timer.scheduledTimer(
-            timeInterval: 1.0,
-            target: self,
-            selector: #selector(self.updateCountdown),
-            userInfo: nil,
-            repeats: true
-        )
+            button.setTitle("Start", for: .normal)
+        } else {
+            delegate?.answer(isAllowed: true)
 
-        button.setTitle("Reset", for: .normal)
+            timer = Timer.scheduledTimer(
+                timeInterval: 1.0,
+                target: self,
+                selector: #selector(self.updateCountdown),
+                userInfo: nil,
+                repeats: true
+            )
+
+            button.setTitle("Reset", for: .normal)
+        }
     }
 
     @objc fileprivate func updateCountdown() {
@@ -164,4 +173,5 @@ class ProgressDisplayView : UIView {
 
 protocol ProgressDisplayDelegate {
     func answer(isAllowed: Bool)
+    func reset()
 }

@@ -47,6 +47,12 @@ class AnswerView : UIView, UITableViewDelegate, UITableViewDataSource, UISearchB
     // MARK: Setter
     func set(answerKey: [String]) {
         self.answerKey = answerKey
+        self.searchBar.text = nil
+        self.searchBar.isUserInteractionEnabled = false
+        self.userAnswers = []
+        self.searchBar.resignFirstResponder()
+
+        self.tableView.reloadData()
     }
 
     func set(answerCanBeInserted: Bool) {

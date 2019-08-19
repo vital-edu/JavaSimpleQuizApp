@@ -10,9 +10,10 @@ import Foundation
 import UIKit
 
 class QuizView : UIStackView, AnswerViewDelegate, ProgressDisplayDelegate {
-    let questionView = QuestionView()
-    let answerView = AnswerView()
-    let progressDisplayView = ProgressDisplayView()
+    private let questionView = QuestionView()
+    private let answerView = AnswerView()
+    private let progressDisplayView = ProgressDisplayView()
+    private var model: ShowQuiz.ViewModel!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,6 +32,8 @@ class QuizView : UIStackView, AnswerViewDelegate, ProgressDisplayDelegate {
 
         answerView.delegate = self
         progressDisplayView.delegate = self
+
+        self.model = model
     }
 
     private func setupView() {
@@ -55,6 +58,11 @@ class QuizView : UIStackView, AnswerViewDelegate, ProgressDisplayDelegate {
 
     func answer(isAllowed: Bool) {
         answerView.set(answerCanBeInserted: isAllowed)
+    }
+
+    func reset() {
+        self.progressDisplayView.set(withModel: self.model.progressDisplay)
+        self.answerView.set(answerKey: model.answers)
     }
 
     // MARK: - AnswerViewDelegate
