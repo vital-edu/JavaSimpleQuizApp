@@ -21,7 +21,7 @@ class QuizAPI: QuizStoreProtocol {
             if let data = data {
                 completionHandler { return Quiz.init(fromData: data) }
             } else {
-                completionHandler { throw QuizStoreError.CannotFetch("error") }
+                completionHandler { throw QuizStoreError.CannotFetch(error?.localizedDescription ?? "error") }
             }
         }
 
