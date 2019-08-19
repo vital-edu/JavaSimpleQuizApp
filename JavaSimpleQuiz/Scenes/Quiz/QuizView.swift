@@ -79,6 +79,9 @@ class QuizView : UIStackView, AnswerViewDelegate, ProgressDisplayDelegate {
 
     func update(score: Int) {
         progressDisplayView.set(correctAnswers: score)
+        if (score == model.progressDisplay.totalAnswers) {
+            delegate?.endGame(withResult: .won)
+        }
     }
 }
 

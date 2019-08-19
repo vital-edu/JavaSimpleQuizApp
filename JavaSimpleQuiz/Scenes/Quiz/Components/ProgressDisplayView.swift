@@ -95,6 +95,9 @@ class ProgressDisplayView : UIView {
     }
 
     func set(correctAnswers: Int) {
+        if (correctAnswers == totalAnswers) {
+            timer?.invalidate()
+        }
         self.correctAnswers = correctAnswers
     }
 
