@@ -29,6 +29,8 @@ class AnswerView : UIView, UITableViewDelegate, UITableViewDataSource, UISearchB
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorInset = .zero
         tableView.tableFooterView = UIView()
+        tableView.alwaysBounceVertical = false
+        tableView.allowsSelection = false
 
         return tableView
     }()
@@ -78,6 +80,7 @@ class AnswerView : UIView, UITableViewDelegate, UITableViewDataSource, UISearchB
         searchBar.placeholder = "Insert Word"
         searchBar.isUserInteractionEnabled = false
         searchBar.searchBarStyle = .minimal
+        searchBar.backgroundColor = .white
         searchBar.setImage(UIImage(), for: .search, state: .normal)
         searchBar.setPositionAdjustment(
             UIOffset(horizontal: -20, vertical: 0),
