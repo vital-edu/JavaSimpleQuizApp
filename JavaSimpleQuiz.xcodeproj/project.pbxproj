@@ -22,22 +22,18 @@
 		A9DEFEEF2309B6F600F82CCF /* AnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DEFEEE2309B6F600F82CCF /* AnswerView.swift */; };
 		A9DEFEF12309B83C00F82CCF /* ProgressDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DEFEF02309B83C00F82CCF /* ProgressDisplayView.swift */; };
 		A9DEFEF72309F0C800F82CCF /* DefaultFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DEFEF62309F0C800F82CCF /* DefaultFont.swift */; };
+		A9DEFEFC230A019A00F82CCF /* QuizAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DEFEFB230A019A00F82CCF /* QuizAPI.swift */; };
+		A9DEFEFE230A053400F82CCF /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DEFEFD230A053400F82CCF /* Quiz.swift */; };
+		A9DEFF2B230A1E8300F82CCF /* QuizAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DEFF2A230A1E8300F82CCF /* QuizAPITest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A9DEFE9B2309951600F82CCF /* PBXContainerItemProxy */ = {
+		A9DEFF20230A1E3800F82CCF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A9DEFE7E2309951300F82CCF /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = A9DEFE852309951300F82CCF;
-			remoteInfo = "Java Simple Quiz";
-		};
-		A9DEFEA62309951600F82CCF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A9DEFE7E2309951300F82CCF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A9DEFE852309951300F82CCF;
-			remoteInfo = "Java Simple Quiz";
+			remoteInfo = JavaSimpleQuiz;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -48,10 +44,6 @@
 		A9DEFE902309951600F82CCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A9DEFE932309951600F82CCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A9DEFE952309951600F82CCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A9DEFE9A2309951600F82CCF /* JavaSimpleQuizTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JavaSimpleQuizTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A9DEFEA02309951600F82CCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A9DEFEA52309951600F82CCF /* JavaSimpleQuizUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JavaSimpleQuizUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A9DEFEAB2309951600F82CCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9DEFED62309A13B00F82CCF /* QuizPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizPresenter.swift; sourceTree = "<group>"; };
 		A9DEFED72309A13B00F82CCF /* QuizWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizWorker.swift; sourceTree = "<group>"; };
 		A9DEFED82309A13B00F82CCF /* QuizRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRouter.swift; sourceTree = "<group>"; };
@@ -63,6 +55,11 @@
 		A9DEFEEE2309B6F600F82CCF /* AnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerView.swift; sourceTree = "<group>"; };
 		A9DEFEF02309B83C00F82CCF /* ProgressDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDisplayView.swift; sourceTree = "<group>"; };
 		A9DEFEF62309F0C800F82CCF /* DefaultFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFont.swift; sourceTree = "<group>"; };
+		A9DEFEFB230A019A00F82CCF /* QuizAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizAPI.swift; sourceTree = "<group>"; };
+		A9DEFEFD230A053400F82CCF /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
+		A9DEFF1B230A1E3800F82CCF /* JavaSimpleQuizTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JavaSimpleQuizTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9DEFF1F230A1E3800F82CCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9DEFF2A230A1E8300F82CCF /* QuizAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizAPITest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,14 +70,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A9DEFE972309951600F82CCF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A9DEFEA22309951600F82CCF /* Frameworks */ = {
+		A9DEFF18230A1E3800F82CCF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -94,8 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				A9DEFE882309951400F82CCF /* JavaSimpleQuiz */,
-				A9DEFE9D2309951600F82CCF /* JavaSimpleQuizTests */,
-				A9DEFEA82309951600F82CCF /* JavaSimpleQuizUITests */,
+				A9DEFF1C230A1E3800F82CCF /* JavaSimpleQuizTests */,
 				A9DEFE872309951400F82CCF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -104,8 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				A9DEFE862309951400F82CCF /* JavaSimpleQuiz.app */,
-				A9DEFE9A2309951600F82CCF /* JavaSimpleQuizTests.xctest */,
-				A9DEFEA52309951600F82CCF /* JavaSimpleQuizUITests.xctest */,
+				A9DEFF1B230A1E3800F82CCF /* JavaSimpleQuizTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -113,6 +101,7 @@
 		A9DEFE882309951400F82CCF /* JavaSimpleQuiz */ = {
 			isa = PBXGroup;
 			children = (
+				A9DEFEFA230A009F00F82CCF /* Models */,
 				A9DEFEF52309F0B400F82CCF /* Helpers */,
 				A9DEFED42309A12000F82CCF /* Scenes */,
 				A9DEFE892309951400F82CCF /* AppDelegate.swift */,
@@ -122,22 +111,6 @@
 				A9DEFE952309951600F82CCF /* Info.plist */,
 			);
 			path = JavaSimpleQuiz;
-			sourceTree = "<group>";
-		};
-		A9DEFE9D2309951600F82CCF /* JavaSimpleQuizTests */ = {
-			isa = PBXGroup;
-			children = (
-				A9DEFEA02309951600F82CCF /* Info.plist */,
-			);
-			path = JavaSimpleQuizTests;
-			sourceTree = "<group>";
-		};
-		A9DEFEA82309951600F82CCF /* JavaSimpleQuizUITests */ = {
-			isa = PBXGroup;
-			children = (
-				A9DEFEAB2309951600F82CCF /* Info.plist */,
-			);
-			path = JavaSimpleQuizUITests;
 			sourceTree = "<group>";
 		};
 		A9DEFED42309A12000F82CCF /* Scenes */ = {
@@ -151,6 +124,7 @@
 		A9DEFED52309A12900F82CCF /* Quiz */ = {
 			isa = PBXGroup;
 			children = (
+				A9DEFF00230A078A00F82CCF /* Services */,
 				A9DEFEE92309B0DB00F82CCF /* Components */,
 				A9DEFED62309A13B00F82CCF /* QuizPresenter.swift */,
 				A9DEFED72309A13B00F82CCF /* QuizWorker.swift */,
@@ -181,6 +155,55 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		A9DEFEFA230A009F00F82CCF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A9DEFEFD230A053400F82CCF /* Quiz.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A9DEFF00230A078A00F82CCF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A9DEFEFB230A019A00F82CCF /* QuizAPI.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A9DEFF1C230A1E3800F82CCF /* JavaSimpleQuizTests */ = {
+			isa = PBXGroup;
+			children = (
+				A9DEFF25230A1E4C00F82CCF /* Scenes */,
+				A9DEFF1F230A1E3800F82CCF /* Info.plist */,
+			);
+			path = JavaSimpleQuizTests;
+			sourceTree = "<group>";
+		};
+		A9DEFF25230A1E4C00F82CCF /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				A9DEFF26230A1E5300F82CCF /* Quiz */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		A9DEFF26230A1E5300F82CCF /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				A9DEFF27230A1E5B00F82CCF /* Services */,
+			);
+			path = Quiz;
+			sourceTree = "<group>";
+		};
+		A9DEFF27230A1E5B00F82CCF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A9DEFF2A230A1E8300F82CCF /* QuizAPITest.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -201,41 +224,23 @@
 			productReference = A9DEFE862309951400F82CCF /* JavaSimpleQuiz.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A9DEFE992309951600F82CCF /* JavaSimpleQuizTests */ = {
+		A9DEFF1A230A1E3800F82CCF /* JavaSimpleQuizTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A9DEFEB12309951600F82CCF /* Build configuration list for PBXNativeTarget "JavaSimpleQuizTests" */;
+			buildConfigurationList = A9DEFF22230A1E3800F82CCF /* Build configuration list for PBXNativeTarget "JavaSimpleQuizTests" */;
 			buildPhases = (
-				A9DEFE962309951600F82CCF /* Sources */,
-				A9DEFE972309951600F82CCF /* Frameworks */,
-				A9DEFE982309951600F82CCF /* Resources */,
+				A9DEFF17230A1E3800F82CCF /* Sources */,
+				A9DEFF18230A1E3800F82CCF /* Frameworks */,
+				A9DEFF19230A1E3800F82CCF /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A9DEFE9C2309951600F82CCF /* PBXTargetDependency */,
+				A9DEFF21230A1E3800F82CCF /* PBXTargetDependency */,
 			);
 			name = JavaSimpleQuizTests;
-			productName = "Java Simple QuizTests";
-			productReference = A9DEFE9A2309951600F82CCF /* JavaSimpleQuizTests.xctest */;
+			productName = JavaSimpleQuizTests;
+			productReference = A9DEFF1B230A1E3800F82CCF /* JavaSimpleQuizTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		A9DEFEA42309951600F82CCF /* JavaSimpleQuizUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A9DEFEB42309951600F82CCF /* Build configuration list for PBXNativeTarget "JavaSimpleQuizUITests" */;
-			buildPhases = (
-				A9DEFEA12309951600F82CCF /* Sources */,
-				A9DEFEA22309951600F82CCF /* Frameworks */,
-				A9DEFEA32309951600F82CCF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A9DEFEA72309951600F82CCF /* PBXTargetDependency */,
-			);
-			name = JavaSimpleQuizUITests;
-			productName = "Java Simple QuizUITests";
-			productReference = A9DEFEA52309951600F82CCF /* JavaSimpleQuizUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -250,11 +255,7 @@
 					A9DEFE852309951300F82CCF = {
 						CreatedOnToolsVersion = 10.3;
 					};
-					A9DEFE992309951600F82CCF = {
-						CreatedOnToolsVersion = 10.3;
-						TestTargetID = A9DEFE852309951300F82CCF;
-					};
-					A9DEFEA42309951600F82CCF = {
+					A9DEFF1A230A1E3800F82CCF = {
 						CreatedOnToolsVersion = 10.3;
 						TestTargetID = A9DEFE852309951300F82CCF;
 					};
@@ -274,8 +275,7 @@
 			projectRoot = "";
 			targets = (
 				A9DEFE852309951300F82CCF /* JavaSimpleQuiz */,
-				A9DEFE992309951600F82CCF /* JavaSimpleQuizTests */,
-				A9DEFEA42309951600F82CCF /* JavaSimpleQuizUITests */,
+				A9DEFF1A230A1E3800F82CCF /* JavaSimpleQuizTests */,
 			);
 		};
 /* End PBXProject section */
@@ -291,14 +291,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A9DEFE982309951600F82CCF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A9DEFEA32309951600F82CCF /* Resources */ = {
+		A9DEFF19230A1E3800F82CCF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -314,12 +307,14 @@
 			files = (
 				A9DEFEF72309F0C800F82CCF /* DefaultFont.swift in Sources */,
 				A9DEFEE02309A13B00F82CCF /* QuizViewController.swift in Sources */,
+				A9DEFEFE230A053400F82CCF /* Quiz.swift in Sources */,
 				A9DEFE8A2309951400F82CCF /* AppDelegate.swift in Sources */,
 				A9DEFEEF2309B6F600F82CCF /* AnswerView.swift in Sources */,
 				A9DEFEE12309A13B00F82CCF /* QuizInteractor.swift in Sources */,
 				A9DEFEDF2309A13B00F82CCF /* QuizModels.swift in Sources */,
 				A9DEFEDD2309A13B00F82CCF /* QuizWorker.swift in Sources */,
 				A9DEFEEB2309B0EC00F82CCF /* QuizView.swift in Sources */,
+				A9DEFEFC230A019A00F82CCF /* QuizAPI.swift in Sources */,
 				A9DEFEDE2309A13B00F82CCF /* QuizRouter.swift in Sources */,
 				A9DEFEED2309B1BD00F82CCF /* QuestionView.swift in Sources */,
 				A9DEFEF12309B83C00F82CCF /* ProgressDisplayView.swift in Sources */,
@@ -327,32 +322,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A9DEFE962309951600F82CCF /* Sources */ = {
+		A9DEFF17230A1E3800F82CCF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A9DEFEA12309951600F82CCF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				A9DEFF2B230A1E8300F82CCF /* QuizAPITest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A9DEFE9C2309951600F82CCF /* PBXTargetDependency */ = {
+		A9DEFF21230A1E3800F82CCF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A9DEFE852309951300F82CCF /* JavaSimpleQuiz */;
-			targetProxy = A9DEFE9B2309951600F82CCF /* PBXContainerItemProxy */;
-		};
-		A9DEFEA72309951600F82CCF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A9DEFE852309951300F82CCF /* JavaSimpleQuiz */;
-			targetProxy = A9DEFEA62309951600F82CCF /* PBXContainerItemProxy */;
+			targetProxy = A9DEFF20230A1E3800F82CCF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -526,19 +510,18 @@
 			};
 			name = Release;
 		};
-		A9DEFEB22309951600F82CCF /* Debug */ = {
+		A9DEFF23230A1E3800F82CCF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Java Simple QuizTests/Info.plist";
+				INFOPLIST_FILE = JavaSimpleQuizTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.eduardovital.Java-Simple-QuizTests";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.eduardovital.JavaSimpleQuizTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -546,61 +529,22 @@
 			};
 			name = Debug;
 		};
-		A9DEFEB32309951600F82CCF /* Release */ = {
+		A9DEFF24230A1E3800F82CCF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Java Simple QuizTests/Info.plist";
+				INFOPLIST_FILE = JavaSimpleQuizTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.eduardovital.Java-Simple-QuizTests";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.eduardovital.JavaSimpleQuizTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JavaSimpleQuiz.app/JavaSimpleQuiz";
-			};
-			name = Release;
-		};
-		A9DEFEB52309951600F82CCF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Java Simple QuizUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.eduardovital.Java-Simple-QuizUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Java Simple Quiz";
-			};
-			name = Debug;
-		};
-		A9DEFEB62309951600F82CCF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Java Simple QuizUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.eduardovital.Java-Simple-QuizUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Java Simple Quiz";
 			};
 			name = Release;
 		};
@@ -625,20 +569,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A9DEFEB12309951600F82CCF /* Build configuration list for PBXNativeTarget "JavaSimpleQuizTests" */ = {
+		A9DEFF22230A1E3800F82CCF /* Build configuration list for PBXNativeTarget "JavaSimpleQuizTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A9DEFEB22309951600F82CCF /* Debug */,
-				A9DEFEB32309951600F82CCF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A9DEFEB42309951600F82CCF /* Build configuration list for PBXNativeTarget "JavaSimpleQuizUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A9DEFEB52309951600F82CCF /* Debug */,
-				A9DEFEB62309951600F82CCF /* Release */,
+				A9DEFF23230A1E3800F82CCF /* Debug */,
+				A9DEFF24230A1E3800F82CCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
