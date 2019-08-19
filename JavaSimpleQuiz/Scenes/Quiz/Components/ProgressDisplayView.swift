@@ -17,6 +17,7 @@ class ProgressDisplayView : UIView {
     private let startButtonTitle = "Start"
     private let restartButtonTitle = "Restart"
 
+    private var isPlaying = false
     private var timer: Timer?
     var delegate: ProgressDisplayDelegate?
 
@@ -92,11 +93,13 @@ class ProgressDisplayView : UIView {
         self.totalAnswers = model.totalAnswers
         self.remainingTime = model.time
         self.button.setTitle(startButtonTitle, for: .normal)
+        self.isPlaying = false
     }
 
     func set(correctAnswers: Int) {
         if (correctAnswers == totalAnswers) {
             timer?.invalidate()
+            timer = nil
         }
         self.correctAnswers = correctAnswers
     }
@@ -104,16 +107,16 @@ class ProgressDisplayView : UIView {
     // MARK: - Selectors
 
     @objc fileprivate func startReset() {
-        if let timer = timer {
-            timer.invalidate()
+        if self.isPlaying {
+            self.timer?.invalidate()
             self.timer = nil
             self.delegate?.reset()
 
-            button.setTitle("Start", for: .normal)
+            self.button.setTitle("Start", for: .normal)
         } else {
-            delegate?.answer(isAllowed: true)
+            self.delegate?.answer(isAllowed: true)
 
-            timer = Timer.scheduledTimer(
+            self.timer = Timer.scheduledTimer(
                 timeInterval: 1.0,
                 target: self,
                 selector: #selector(self.updateCountdown),
@@ -121,8 +124,10 @@ class ProgressDisplayView : UIView {
                 repeats: true
             )
 
-            button.setTitle("Reset", for: .normal)
+            self.button.setTitle("Reset", for: .normal)
         }
+
+        self.isPlaying = !self.isPlaying
     }
 
     @objc fileprivate func updateCountdown() {
