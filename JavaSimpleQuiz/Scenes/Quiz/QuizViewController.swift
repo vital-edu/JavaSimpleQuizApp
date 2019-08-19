@@ -9,9 +9,11 @@
 import UIKit
 
 protocol QuizDisplayLogic: class {
+  func displayFetchedQuiz(viewModel: ShowQuiz.ViewModel)
 }
 
 class QuizViewController: UIViewController, QuizDisplayLogic {
+  var quizView = QuizView();
   var interactor: QuizBusinessLogic?
   var router: (NSObjectProtocol & QuizRoutingLogic & QuizDataPassing)?
 
@@ -58,7 +60,6 @@ class QuizViewController: UIViewController, QuizDisplayLogic {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    let quizView = QuizView();
     quizView.translatesAutoresizingMaskIntoConstraints = false
 
     self.view.addSubview(quizView)
@@ -78,5 +79,8 @@ class QuizViewController: UIViewController, QuizDisplayLogic {
     quizView.bottomAnchor.constraint(
         equalTo: view.bottomAnchor
     ).isActive = true
+  }
+
+  func displayFetchedQuiz(viewModel: ShowQuiz.ViewModel) {
   }
 }

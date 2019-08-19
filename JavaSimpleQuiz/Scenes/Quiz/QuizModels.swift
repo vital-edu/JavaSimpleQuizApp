@@ -17,18 +17,15 @@ enum ShowQuiz {
         var quiz: Quiz
     }
     struct ViewModel {
-        struct Question {
-            var text: String
-        }
-        struct Answer {
-            var text: String
-        }
+        var question: String
+        var answers: [String]
+        var progressDisplay: ProgressDisplay
+
         struct ProgressDisplay {
             var time: Double
             var discoveredAnswers: Int
             var totalAnswers: Int
             var answers: [String]
         }
-        var answers: [Answer]
     }
 }

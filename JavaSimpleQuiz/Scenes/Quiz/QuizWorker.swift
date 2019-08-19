@@ -8,14 +8,26 @@
 
 import UIKit
 
-class QuizWorker: QuizStoreProtocol {
+class QuizWorker {
     var quizStore: QuizStoreProtocol
 
     init(quizStore: QuizStoreProtocol) {
         self.quizStore = quizStore
     }
 
-    func fetchQuiz(completionHandler: @escaping (() throws -> Quiz?) -> Void) {
+    func fetchQuiz(completionHandler: @escaping (Quiz?) -> Void) {
+        quizStore.fetchQuiz { (quiz: () throws -> Quiz?) -> Void in
+            do {
+                let quiz = try quiz()
+                DispatchQueue.main.async {
+                    completionHandler(quiz)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completionHandler(nil)
+                }
+            }
+        }
     }
 }
 // MARK: - Quiz store API
