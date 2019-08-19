@@ -9,78 +9,78 @@
 import UIKit
 
 protocol QuizDisplayLogic: class {
-  func displayFetchedQuiz(viewModel: ShowQuiz.ViewModel)
+    func displayFetchedQuiz(viewModel: ShowQuiz.ViewModel)
 }
 
 class QuizViewController: UIViewController, QuizDisplayLogic {
-  var quizView = QuizView();
-  var interactor: QuizBusinessLogic?
-  var router: (NSObjectProtocol & QuizRoutingLogic & QuizDataPassing)?
+    var quizView = QuizView();
+    var interactor: QuizBusinessLogic?
+    var router: (NSObjectProtocol & QuizRoutingLogic & QuizDataPassing)?
 
-  // MARK: Object lifecycle
+    // MARK: Object lifecycle
 
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    setup()
-  }
-
-  // MARK: Setup
-
-  private func setup() {
-    let viewController = self
-    let interactor = QuizInteractor()
-    let presenter = QuizPresenter()
-    let router = QuizRouter()
-    viewController.interactor = interactor
-    viewController.router = router
-    interactor.presenter = presenter
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
-  }
-
-  // MARK: Routing
-
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
     }
-  }
 
-  // MARK: View lifecycle
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
+    // MARK: Setup
 
-    quizView.translatesAutoresizingMaskIntoConstraints = false
+    private func setup() {
+        let viewController = self
+        let interactor = QuizInteractor()
+        let presenter = QuizPresenter()
+        let router = QuizRouter()
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
+    }
 
-    self.view.addSubview(quizView)
+    // MARK: Routing
 
-    // quiz view constraints
-    let topMargin : CGFloat = 44;
-    quizView.topAnchor.constraint(
-        equalTo: view.safeAreaLayoutGuide.topAnchor,
-        constant: topMargin
-    ).isActive = true
-    quizView.leadingAnchor.constraint(
-        equalTo: view.safeAreaLayoutGuide.leadingAnchor
-    ).isActive = true
-    quizView.trailingAnchor.constraint(
-        equalTo: view.safeAreaLayoutGuide.trailingAnchor
-    ).isActive = true
-    quizView.bottomAnchor.constraint(
-        equalTo: view.bottomAnchor
-    ).isActive = true
-  }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let scene = segue.identifier {
+            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+            if let router = router, router.responds(to: selector) {
+                router.perform(selector, with: segue)
+            }
+        }
+    }
 
-  func displayFetchedQuiz(viewModel: ShowQuiz.ViewModel) {
-  }
+    // MARK: View lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        quizView.translatesAutoresizingMaskIntoConstraints = false
+
+        self.view.addSubview(quizView)
+
+        // quiz view constraints
+        let topMargin : CGFloat = 44;
+        quizView.topAnchor.constraint(
+            equalTo: view.safeAreaLayoutGuide.topAnchor,
+            constant: topMargin
+        ).isActive = true
+        quizView.leadingAnchor.constraint(
+            equalTo: view.safeAreaLayoutGuide.leadingAnchor
+        ).isActive = true
+        quizView.trailingAnchor.constraint(
+            equalTo: view.safeAreaLayoutGuide.trailingAnchor
+        ).isActive = true
+        quizView.bottomAnchor.constraint(
+            equalTo: view.bottomAnchor
+        ).isActive = true
+    }
+
+    func displayFetchedQuiz(viewModel: ShowQuiz.ViewModel) {
+    }
 }

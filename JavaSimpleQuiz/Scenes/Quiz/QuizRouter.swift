@@ -12,16 +12,16 @@ import UIKit
 }
 
 protocol QuizDataPassing {
-  var dataStore: QuizDataStore? { get }
+    var dataStore: QuizDataStore? { get }
 }
 
 class QuizRouter: NSObject, QuizRoutingLogic, QuizDataPassing {
-  weak var viewController: QuizViewController?
-  var dataStore: QuizDataStore?
+    weak var viewController: QuizViewController?
+    var dataStore: QuizDataStore?
 
-  // MARK: Routing
+    // MARK: Routing
 
-  // MARK: Navigation
+    // MARK: Navigation
 
-  // MARK: Passing data
+    // MARK: Passing data
 }
