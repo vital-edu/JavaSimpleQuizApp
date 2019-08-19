@@ -25,6 +25,7 @@
 		A9DEFEFC230A019A00F82CCF /* QuizAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DEFEFB230A019A00F82CCF /* QuizAPI.swift */; };
 		A9DEFEFE230A053400F82CCF /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DEFEFD230A053400F82CCF /* Quiz.swift */; };
 		A9DEFF2B230A1E8300F82CCF /* QuizAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DEFF2A230A1E8300F82CCF /* QuizAPITest.swift */; };
+		A9DEFF2F230A4F2300F82CCF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DEFF2E230A4F2300F82CCF /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		A9DEFF1B230A1E3800F82CCF /* JavaSimpleQuizTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JavaSimpleQuizTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9DEFF1F230A1E3800F82CCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9DEFF2A230A1E8300F82CCF /* QuizAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizAPITest.swift; sourceTree = "<group>"; };
+		A9DEFF2E230A4F2300F82CCF /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 		A9DEFEE92309B0DB00F82CCF /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A9DEFF2E230A4F2300F82CCF /* LoadingView.swift */,
 				A9DEFEEC2309B1BD00F82CCF /* QuestionView.swift */,
 				A9DEFEEE2309B6F600F82CCF /* AnswerView.swift */,
 				A9DEFEF02309B83C00F82CCF /* ProgressDisplayView.swift */,
@@ -313,6 +316,7 @@
 				A9DEFEE12309A13B00F82CCF /* QuizInteractor.swift in Sources */,
 				A9DEFEDF2309A13B00F82CCF /* QuizModels.swift in Sources */,
 				A9DEFEDD2309A13B00F82CCF /* QuizWorker.swift in Sources */,
+				A9DEFF2F230A4F2300F82CCF /* LoadingView.swift in Sources */,
 				A9DEFEEB2309B0EC00F82CCF /* QuizView.swift in Sources */,
 				A9DEFEFC230A019A00F82CCF /* QuizAPI.swift in Sources */,
 				A9DEFEDE2309A13B00F82CCF /* QuizRouter.swift in Sources */,

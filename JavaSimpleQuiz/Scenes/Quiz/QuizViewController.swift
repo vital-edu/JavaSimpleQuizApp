@@ -16,6 +16,7 @@ class QuizViewController: UIViewController, QuizDisplayLogic {
     var quizView = QuizView();
     var interactor: QuizBusinessLogic?
     var router: (NSObjectProtocol & QuizRoutingLogic & QuizDataPassing)?
+    var loadingView: UIVisualEffectView?
 
     // MARK: Object lifecycle
 
@@ -65,9 +66,10 @@ class QuizViewController: UIViewController, QuizDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        quizView.translatesAutoresizingMaskIntoConstraints = false
-
         self.view.addSubview(quizView)
+        self.setupWaitingView()
+
+        quizView.translatesAutoresizingMaskIntoConstraints = false
 
         // quiz view constraints
         let topMargin : CGFloat = 44;
@@ -86,6 +88,16 @@ class QuizViewController: UIViewController, QuizDisplayLogic {
         ).isActive = true
     }
 
+    func setupWaitingView() {
+        loadingView = LoadingView()
+        self.view.addSubview(loadingView!)
+
+        loadingView!.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+        loadingView!.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
+        loadingView!.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        loadingView!.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+    }
+
     // MARK: - Fetch orders
     func fetchQuiz() {
         let request = ShowQuiz.Request()
@@ -94,5 +106,6 @@ class QuizViewController: UIViewController, QuizDisplayLogic {
 
     func displayFetchedQuiz(viewModel: ShowQuiz.ViewModel) {
         quizView.update(withModel: viewModel)
+        loadingView?.removeFromSuperview()
     }
 }
