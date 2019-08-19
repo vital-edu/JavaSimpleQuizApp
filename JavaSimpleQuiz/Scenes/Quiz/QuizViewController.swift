@@ -57,6 +57,11 @@ class QuizViewController: UIViewController, QuizDisplayLogic {
 
     // MARK: View lifecycle
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchQuiz()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -81,6 +86,13 @@ class QuizViewController: UIViewController, QuizDisplayLogic {
         ).isActive = true
     }
 
+    // MARK: - Fetch orders
+    func fetchQuiz() {
+        let request = ShowQuiz.Request()
+        interactor?.fetchQuiz(request: request)
+    }
+
     func displayFetchedQuiz(viewModel: ShowQuiz.ViewModel) {
+        quizView.update(withModel: viewModel)
     }
 }

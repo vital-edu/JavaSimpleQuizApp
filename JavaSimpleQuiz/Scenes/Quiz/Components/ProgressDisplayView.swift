@@ -14,6 +14,8 @@ class ProgressDisplayView : UIView {
     let timerLabel = UILabel()
     let scoreLabel = UILabel()
 
+    private var answers: [String] = []
+
     private var remainingTime: Int = 0 {
         didSet (newValue) {
             let hours = Int(newValue) / 3600
@@ -27,7 +29,7 @@ class ProgressDisplayView : UIView {
 
     private var correctAnswers: Int = 0 {
         didSet(newValue) {
-            scoreLabel.text = String(format: "%i/%i", newValue, 50)
+            scoreLabel.text = String(format: "%i/%i", newValue, 0)
         }
     }
 
@@ -65,6 +67,10 @@ class ProgressDisplayView : UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupView()
+    }
+
+    func set(withModel model: ShowQuiz.ViewModel.ProgressDisplay) {
+        self.answers = model.answers
     }
 
     private func setupView() {

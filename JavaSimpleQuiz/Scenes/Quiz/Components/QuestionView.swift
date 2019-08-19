@@ -10,6 +10,15 @@ import Foundation
 import UIKit
 
 class QuestionView : UILabel {
+    public var question: String {
+        get {
+            return self.text ?? ""
+        }
+        set(newValue) {
+            self.text = newValue
+        }
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -24,6 +33,5 @@ class QuestionView : UILabel {
         self.numberOfLines = 0
         self.lineBreakMode = .byWordWrapping
         self.font = DefaultFont.titleFont
-        self.text = "What are all the java Keywords?"
     }
 }

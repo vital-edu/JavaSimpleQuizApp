@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 
 class QuizView : UIStackView {
+    let questionView = QuestionView()
+    let answerView = AnswerView()
+    let progressDisplayView = ProgressDisplayView()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -20,14 +24,15 @@ class QuizView : UIStackView {
         setupView()
     }
 
+    func update(withModel model: ShowQuiz.ViewModel) {
+        questionView.question = model.question
+        progressDisplayView.set(withModel: model.progressDisplay)
+    }
+
     private func setupView() {
         self.distribution = .fill
         self.alignment = .center
         self.axis = .vertical
-
-        let questionView = QuestionView()
-        let answerView = AnswerView()
-        let progressDisplayView = ProgressDisplayView()
 
         self.addArrangedSubview(questionView)
         self.addArrangedSubview(answerView)
