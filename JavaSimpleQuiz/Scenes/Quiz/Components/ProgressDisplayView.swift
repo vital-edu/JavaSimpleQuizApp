@@ -14,7 +14,10 @@ class ProgressDisplayView : UIView {
     private let timerLabel = UILabel()
     private let scoreLabel = UILabel()
 
+    private var timer: Timer?
+
     private var totalAnswers: Int = 0
+    var delegate: ProgressDisplayDelegate?
 
     private var remainingTime: Int = 0 {
         didSet {
@@ -40,6 +43,7 @@ class ProgressDisplayView : UIView {
         button.backgroundColor = UIColor(red: 1, green: 0.51, blue: 0, alpha: 1)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(startReset), for: .touchUpInside)
 
         return button
     }()
@@ -80,6 +84,31 @@ class ProgressDisplayView : UIView {
 
     func set(correctAnswers: Int) {
         self.correctAnswers = correctAnswers
+    }
+
+    // MARK: - Selectors
+
+    @objc fileprivate func startReset() {
+        delegate?.answer(isAllowed: true)
+
+        timer = Timer.scheduledTimer(
+            timeInterval: 1.0,
+            target: self,
+            selector: #selector(self.updateCountdown),
+            userInfo: nil,
+            repeats: true
+        )
+
+        button.setTitle("Reset", for: .normal)
+    }
+
+    @objc fileprivate func updateCountdown() {
+        remainingTime -= 1
+
+        if remainingTime <= 0 {
+            timer?.invalidate()
+            timer = nil
+        }
     }
 
     // MARK: - Setup View
@@ -131,4 +160,8 @@ class ProgressDisplayView : UIView {
             .constraint(equalToConstant: buttonHeight)
             .isActive = true
     }
+}
+
+protocol ProgressDisplayDelegate {
+    func answer(isAllowed: Bool)
 }

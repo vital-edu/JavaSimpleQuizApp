@@ -28,8 +28,7 @@ class AnswerView : UIView, UITableViewDelegate, UITableViewDataSource, UISearchB
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorInset = .zero
-
-        searchBar.delegate = self
+        tableView.tableFooterView = UIView()
 
         return tableView
     }()
@@ -50,9 +49,15 @@ class AnswerView : UIView, UITableViewDelegate, UITableViewDataSource, UISearchB
         self.answerKey = answerKey
     }
 
+    func set(answerCanBeInserted: Bool) {
+        self.searchBar.isUserInteractionEnabled = answerCanBeInserted
+    }
+
     // MARK: - View Setup
 
     private func setupView() {
+        searchBar.delegate = self
+
         self.addSubview(tableView)
 
         tableView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
@@ -65,6 +70,7 @@ class AnswerView : UIView, UITableViewDelegate, UITableViewDataSource, UISearchB
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         searchBar.placeholder = "Insert Word"
+        searchBar.isUserInteractionEnabled = false
         searchBar.searchBarStyle = .minimal
         searchBar.setImage(UIImage(), for: .search, state: .normal)
         searchBar.setPositionAdjustment(
@@ -89,13 +95,14 @@ class AnswerView : UIView, UITableViewDelegate, UITableViewDataSource, UISearchB
     // MARK: - SearchBar Delegate
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let userInput = searchBar.text else { return }
-        if let index = answerKey.firstIndex(of: userInput.lowercased()) {
+        if let userInput = searchBar.text,
+            let index = answerKey.firstIndex(of: userInput.lowercased()) {
             answerKey.remove(at: index)
             userAnswers.append(userInput.capitalized)
             delegate?.update(score: userAnswers.count)
             tableView.reloadData()
         }
+        searchBar.text = nil
     }
 }
 
