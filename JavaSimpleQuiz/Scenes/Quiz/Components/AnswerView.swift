@@ -9,21 +9,32 @@
 import Foundation
 import UIKit
 
-class AnswerView : UIView, UITableViewDelegate, UITableViewDataSource {
+class AnswerView : UIView, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     private let cellRegisterId = "AnswerViewCell"
+    private let searchBar = UISearchBar()
+    private var answerKey: [String] = []
+    private var userAnswers: [String] = []
+
+    var delegate: AnswerViewDelegate?
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
 
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellRegisterId)
+        tableView.register(
+            UITableViewCell.self,
+            forCellReuseIdentifier: cellRegisterId
+        )
         tableView.delegate = self
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorInset = .zero
 
+        searchBar.delegate = self
+
         return tableView
     }()
 
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -34,6 +45,13 @@ class AnswerView : UIView, UITableViewDelegate, UITableViewDataSource {
         setupView()
     }
 
+    // MARK: Setter
+    func set(answerKey: [String]) {
+        self.answerKey = answerKey
+    }
+
+    // MARK: - View Setup
+
     private func setupView() {
         self.addSubview(tableView)
 
@@ -43,9 +61,9 @@ class AnswerView : UIView, UITableViewDelegate, UITableViewDataSource {
         tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
 
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let searchBar = UISearchBar()
+    // MARK: - TableView Delegate and Data Source
 
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         searchBar.placeholder = "Insert Word"
         searchBar.searchBarStyle = .minimal
         searchBar.setImage(UIImage(), for: .search, state: .normal)
@@ -58,13 +76,29 @@ class AnswerView : UIView, UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return userAnswers.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellRegisterId)!
-        cell.textLabel?.text = "test"
+        cell.textLabel?.text = userAnswers[indexPath.row]
 
         return cell
     }
+
+    // MARK: - SearchBar Delegate
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let userInput = searchBar.text else { return }
+        if let index = answerKey.firstIndex(of: userInput.lowercased()) {
+            answerKey.remove(at: index)
+            userAnswers.append(userInput.capitalized)
+            delegate?.update(score: userAnswers.count)
+            tableView.reloadData()
+        }
+    }
+}
+
+protocol AnswerViewDelegate {
+    func update(score: Int)
 }

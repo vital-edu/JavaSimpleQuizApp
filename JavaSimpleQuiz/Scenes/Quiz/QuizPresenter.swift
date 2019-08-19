@@ -19,8 +19,7 @@ class QuizPresenter: QuizPresentationLogic {
         let progressDisplay = ShowQuiz.ViewModel.ProgressDisplay(
             time: 5 * 60,
             discoveredAnswers: 0,
-            totalAnswers: response.quiz.answers.count,
-            answers:response.quiz.answers
+            totalAnswers: response.quiz.answers.count
         )
         let viewModel = ShowQuiz.ViewModel(
             question: response.quiz.question,

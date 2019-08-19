@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class QuizView : UIStackView {
+class QuizView : UIStackView, AnswerViewDelegate {
     let questionView = QuestionView()
     let answerView = AnswerView()
     let progressDisplayView = ProgressDisplayView()
@@ -27,6 +27,8 @@ class QuizView : UIStackView {
     func update(withModel model: ShowQuiz.ViewModel) {
         questionView.question = model.question
         progressDisplayView.set(withModel: model.progressDisplay)
+        answerView.set(answerKey: model.answers)
+        answerView.delegate = self
     }
 
     private func setupView() {
@@ -45,5 +47,11 @@ class QuizView : UIStackView {
         answerView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16).isActive = true
 
         progressDisplayView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+    }
+
+    // MARK: - AnswerViewDelegate
+
+    func update(score: Int) {
+        progressDisplayView.set(correctAnswers: score)
     }
 }

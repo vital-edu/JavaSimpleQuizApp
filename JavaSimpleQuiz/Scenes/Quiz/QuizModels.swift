@@ -25,7 +25,6 @@ enum ShowQuiz {
             var time: Int
             var discoveredAnswers: Int
             var totalAnswers: Int
-            var answers: [String]
         }
     }
 }

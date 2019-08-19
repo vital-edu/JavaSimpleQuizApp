@@ -10,29 +10,25 @@ import Foundation
 import UIKit
 
 class ProgressDisplayView : UIView {
-    let timeFormat = "%02i:%02i"
-    let timerLabel = UILabel()
-    let scoreLabel = UILabel()
+    private let timeFormat = "%02i:%02i"
+    private let timerLabel = UILabel()
+    private let scoreLabel = UILabel()
 
-    private var answers: [String] = [] {
-        didSet {
-            correctAnswers = 0
-        }
-    }
+    private var totalAnswers: Int = 0
 
     private var remainingTime: Int = 0 {
         didSet {
             let minutes = Int(self.remainingTime) / 60 % 60
             let seconds = Int(self.remainingTime) % 60
 
-            timerLabel.text = String(format: timeFormat, minutes, seconds)
+            self.timerLabel.text = String(format: timeFormat, minutes, seconds)
         }
     }
 
     private var correctAnswers: Int = 0 {
         didSet {
             scoreLabel.text = String(
-                format: "%02i/%02i", self.correctAnswers, answers.count
+                format: "%02i/%02i", self.correctAnswers, self.totalAnswers
             )
         }
     }
@@ -75,11 +71,15 @@ class ProgressDisplayView : UIView {
         setupView()
     }
 
-    // MARK: Setter
+    // MARK: Setters
 
     func set(withModel model: ShowQuiz.ViewModel.ProgressDisplay) {
-        self.answers = model.answers
+        self.totalAnswers = model.totalAnswers
         self.remainingTime = model.time
+    }
+
+    func set(correctAnswers: Int) {
+        self.correctAnswers = correctAnswers
     }
 
     // MARK: - Setup View
