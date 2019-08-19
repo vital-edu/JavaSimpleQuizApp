@@ -15,6 +15,8 @@ class QuizView : UIStackView, AnswerViewDelegate, ProgressDisplayDelegate {
     private let progressDisplayView = ProgressDisplayView()
     private var model: ShowQuiz.ViewModel!
 
+    var delegate: QuizViewDelegate?
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -60,6 +62,14 @@ class QuizView : UIStackView, AnswerViewDelegate, ProgressDisplayDelegate {
         answerView.set(answerCanBeInserted: isAllowed)
     }
 
+    func timeIsOver(score: Int) {
+        let score = ShowQuiz.ViewModel.Result.Score(
+            pontuation: score,
+            total: model.progressDisplay.totalAnswers
+        )
+        delegate?.endGame(withResult: ShowQuiz.ViewModel.Result.lost(score))
+    }
+
     func reset() {
         self.progressDisplayView.set(withModel: self.model.progressDisplay)
         self.answerView.set(answerKey: model.answers)
@@ -70,4 +80,8 @@ class QuizView : UIStackView, AnswerViewDelegate, ProgressDisplayDelegate {
     func update(score: Int) {
         progressDisplayView.set(correctAnswers: score)
     }
+}
+
+protocol QuizViewDelegate {
+    func endGame(withResult result: ShowQuiz.ViewModel.Result)
 }

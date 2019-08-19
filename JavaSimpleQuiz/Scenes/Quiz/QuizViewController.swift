@@ -12,7 +12,7 @@ protocol QuizDisplayLogic: class {
     func displayFetchedQuiz(viewModel: ShowQuiz.ViewModel)
 }
 
-class QuizViewController: UIViewController, QuizDisplayLogic {
+class QuizViewController: UIViewController, QuizDisplayLogic, QuizViewDelegate {
     var quizView = QuizView();
     var interactor: QuizBusinessLogic?
     var router: (NSObjectProtocol & QuizRoutingLogic & QuizDataPassing)?
@@ -86,6 +86,7 @@ class QuizViewController: UIViewController, QuizDisplayLogic {
         self.view.addGestureRecognizer(tapRecognizer)
 
         quizView.translatesAutoresizingMaskIntoConstraints = false
+        quizView.delegate = self
 
         // quiz view constraints
         let topMargin : CGFloat = 44;
@@ -156,5 +157,30 @@ class QuizViewController: UIViewController, QuizDisplayLogic {
     func displayFetchedQuiz(viewModel: ShowQuiz.ViewModel) {
         quizView.update(withModel: viewModel)
         loadingView?.removeFromSuperview()
+    }
+
+    // MARK: - QuizViewDelegate
+
+    func endGame(withResult result: ShowQuiz.ViewModel.Result) {
+        var title: String!
+        var message: String!
+        var actionTitle: String!
+
+        switch result {
+        case .won:
+            title = "Congratulations"
+            message = "Good job! You found all the answers on time. Keep up with the great work."
+            actionTitle = "Play Again"
+        case .lost(let lost):
+            title = "Time finished"
+            message = "Sorry, time is up! You got \(lost.pontuation) out of \(lost.total) answers"
+            actionTitle = "Try Again"
+        }
+
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: { (_) in
+            self.quizView.reset()
+        }))
+        self.present(alert, animated: true)
     }
 }

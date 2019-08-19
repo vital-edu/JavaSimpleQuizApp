@@ -11,12 +11,13 @@ import UIKit
 
 class ProgressDisplayView : UIView {
     private let timeFormat = "%02i:%02i"
+    private let scoreFormat = "%02i/%02i"
     private let timerLabel = UILabel()
     private let scoreLabel = UILabel()
+    private let startButtonTitle = "Start"
+    private let restartButtonTitle = "Restart"
 
     private var timer: Timer?
-
-    private var totalAnswers: Int = 0
     var delegate: ProgressDisplayDelegate?
 
     private var remainingTime: Int = 0 {
@@ -28,17 +29,26 @@ class ProgressDisplayView : UIView {
         }
     }
 
+    private var totalAnswers: Int = 0 {
+        didSet {
+            updateScore()
+        }
+    }
+
     private var correctAnswers: Int = 0 {
         didSet {
-            scoreLabel.text = String(
-                format: "%02i/%02i", self.correctAnswers, self.totalAnswers
-            )
+            updateScore()
         }
+    }
+
+    private func updateScore() {
+        scoreLabel.text = String(
+            format: scoreFormat, self.correctAnswers, self.totalAnswers
+        )
     }
 
     private lazy var button: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Start", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = UIColor(red: 1, green: 0.51, blue: 0, alpha: 1)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -81,6 +91,7 @@ class ProgressDisplayView : UIView {
         self.correctAnswers = 0
         self.totalAnswers = model.totalAnswers
         self.remainingTime = model.time
+        self.button.setTitle(startButtonTitle, for: .normal)
     }
 
     func set(correctAnswers: Int) {
@@ -112,11 +123,13 @@ class ProgressDisplayView : UIView {
     }
 
     @objc fileprivate func updateCountdown() {
-        remainingTime -= 1
+        self.remainingTime -= 1
 
         if remainingTime <= 0 {
-            timer?.invalidate()
-            timer = nil
+            self.timer?.invalidate()
+            self.timer = nil
+            self.remainingTime = 0
+            self.delegate?.timeIsOver(score: correctAnswers)
         }
     }
 
@@ -173,5 +186,6 @@ class ProgressDisplayView : UIView {
 
 protocol ProgressDisplayDelegate {
     func answer(isAllowed: Bool)
+    func timeIsOver(score: Int)
     func reset()
 }

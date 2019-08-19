@@ -20,11 +20,22 @@ enum ShowQuiz {
         var question: String
         var answers: [String]
         var progressDisplay: ProgressDisplay
+        var result: Result?
 
         struct ProgressDisplay {
             var time: Int
             var discoveredAnswers: Int
             var totalAnswers: Int
+        }
+
+        enum Result {
+            case won
+            case lost(Score)
+
+            struct Score {
+                let pontuation: Int
+                let total: Int
+            }
         }
     }
 }

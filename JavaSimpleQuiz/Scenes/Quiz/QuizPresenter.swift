@@ -16,15 +16,17 @@ class QuizPresenter: QuizPresentationLogic {
     weak var viewController: QuizDisplayLogic?
 
     func presentFetchedQuiz(response: ShowQuiz.Response) {
+        let minute = 60;
         let progressDisplay = ShowQuiz.ViewModel.ProgressDisplay(
-            time: 5 * 60,
+            time: 5 * minute,
             discoveredAnswers: 0,
             totalAnswers: response.quiz.answers.count
         )
         let viewModel = ShowQuiz.ViewModel(
             question: response.quiz.question,
             answers: response.quiz.answers,
-            progressDisplay: progressDisplay
+            progressDisplay: progressDisplay,
+            result: nil
         )
 
         viewController?.displayFetchedQuiz(viewModel: viewModel)
